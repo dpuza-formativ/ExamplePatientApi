@@ -76,12 +76,22 @@ global class SampleDataSourceConnection
         Map<String,Object> mappedPatient = new Map<String,Object>();
         
         mappedPatient.put('ExternalId', string.valueOf(jsonPatient.get('PatientId')));
-        mappedPatient.put('DisplayUrl', string.valueOf(jsonPatient.get('DisplayUrl')));
-        mappedPatient.put('Name', string.valueOf(jsonPatient.get('Name')));        
+        //mappedPatient.put('DisplayUrl', string.valueOf(jsonPatient.get('DisplayUrl')));
+        //mappedPatient.put('Name', string.valueOf(jsonPatient.get('Name')));        
+        
+        MapFields(jsonPatient, mappedPatient, new String[] {'LastName', 'Address2', 'PhoneCell', 'FirstName', 'DOB', 'State', 'Zip', 'Address1', 'PhoneHome', 'City'});
         
         return mappedPatient;
     }
 
+    private void MapFields(Map<String,Object> jsonPatient, Map<String,Object> mappedPatient, String[] fieldNames)
+    {
+        for (String fieldName : fieldNames)
+        {
+            mappedPatient.put(fieldName, string.valueOf(jsonPatient.get(fieldName)));
+        }
+    }
+    
     private static List<Map<String,Object>> GetHardcodedResult()
     {
         List<Map<String,Object>> rows = new List<Map<String,Object>>();
