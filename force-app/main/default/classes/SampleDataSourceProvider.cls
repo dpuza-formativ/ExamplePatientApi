@@ -3,7 +3,8 @@ global class SampleDataSourceProvider extends DataSource.Provider
     override global List<DataSource.AuthenticationCapability> getAuthenticationCapabilities()
     {
         List<DataSource.AuthenticationCapability> capabilities = new List<DataSource.AuthenticationCapability>();
-		capabilities.add(DataSource.AuthenticationCapability.ANONYMOUS);        
+		capabilities.add(DataSource.AuthenticationCapability.ANONYMOUS);
+		capabilities.add(DataSource.AuthenticationCapability.BASIC);        
         return capabilities;
     }
     
